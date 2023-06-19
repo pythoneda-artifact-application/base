@@ -5,31 +5,31 @@
     nixos.url = "github:NixOS/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
     pythoneda-base = {
-      url = "github:pythoneda/base/0.0.1a13";
+      url = "github:pythoneda/base/0.0.1a14";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
     };
     pythoneda-artifact-base = {
-      url = "github:pythoneda-artifact/base/0.0.1a1";
+      url = "github:pythoneda-artifact/base/0.0.1a2";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
     };
     pythoneda-infrastructure-base = {
-      url = "github:pythoneda-infrastructure/base/0.0.1a9";
+      url = "github:pythoneda-infrastructure/base/0.0.1a10";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
     };
     pythoneda-artifact-infrastructure-base = {
-      url = "github:pythoneda-artifact-infrastructure/base/0.0.1a1";
+      url = "github:pythoneda-artifact-infrastructure/base/0.0.1a2";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
       inputs.pythoneda-artifact-base.follows = "pythoneda-artifact-base";
     };
     pythoneda-application-base = {
-      url = "github:pythoneda-application/base/0.0.1a9";
+      url = "github:pythoneda-application/base/0.0.1a10";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
@@ -102,12 +102,12 @@
               inherit description homepage license maintainers;
             };
           };
-        pythoneda-artifact-application-base-0_0_1a1-for = { pythoneda-base
+        pythoneda-artifact-application-base-0_0_1a2-for = { pythoneda-base
           , pythoneda-artifact-base, pythoneda-infrastructure-base
           , pythoneda-artifact-infrastructure-base, pythoneda-application-base
           , python }:
           pythoneda-artifact-application-base-for {
-            version = "0.0.1a1";
+            version = "0.0.1a2";
             inherit pythoneda-base pythoneda-artifact-base
               pythoneda-infrastructure-base
               pythoneda-artifact-infrastructure-base pythoneda-application-base
@@ -115,8 +115,8 @@
           };
       in rec {
         packages = rec {
-          pythoneda-artifact-application-base-0_0_1a1-python38 =
-            pythoneda-artifact-application-base-0_0_1a1-for {
+          pythoneda-artifact-application-base-0_0_1a2-python38 =
+            pythoneda-artifact-application-base-0_0_1a2-for {
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python38;
               pythoneda-artifact-base =
@@ -129,8 +129,8 @@
                 pythoneda-application-base.packages.${system}.pythoneda-application-base-latest-python38;
               python = pkgs.python38;
             };
-          pythoneda-artifact-application-base-0_0_1a1-python39 =
-            pythoneda-artifact-application-base-0_0_1a1-for {
+          pythoneda-artifact-application-base-0_0_1a2-python39 =
+            pythoneda-artifact-application-base-0_0_1a2-for {
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python39;
               pythoneda-artifact-base =
@@ -143,8 +143,8 @@
                 pythoneda-application-base.packages.${system}.pythoneda-application-base-latest-python39;
               python = pkgs.python39;
             };
-          pythoneda-artifact-application-base-0_0_1a1-python310 =
-            pythoneda-artifact-application-base-0_0_1a1-for {
+          pythoneda-artifact-application-base-0_0_1a2-python310 =
+            pythoneda-artifact-application-base-0_0_1a2-for {
               pythoneda-base =
                 pythoneda-base.packages.${system}.pythoneda-base-latest-python310;
               pythoneda-artifact-base =
@@ -158,44 +158,50 @@
               python = pkgs.python310;
             };
           pythoneda-artifact-application-base-latest-python38 =
-            pythoneda-artifact-application-base-0_0_1a1-python38;
+            pythoneda-artifact-application-base-0_0_1a2-python38;
           pythoneda-artifact-application-base-latest-python39 =
-            pythoneda-artifact-application-base-0_0_1a1-python39;
+            pythoneda-artifact-application-base-0_0_1a2-python39;
           pythoneda-artifact-application-base-latest-python310 =
-            pythoneda-artifact-application-base-0_0_1a1-python310;
+            pythoneda-artifact-application-base-0_0_1a2-python310;
           pythoneda-artifact-application-base-latest =
             pythoneda-artifact-application-base-latest-python310;
           default = pythoneda-artifact-application-base-latest;
         };
         defaultPackage = packages.default;
         devShells = rec {
-          pythoneda-artifact-application-base-0_0_1a1-python38 =
+          pythoneda-artifact-application-base-0_0_1a2-python38 =
             shared.devShell-for {
               package =
-                packages.pythoneda-artifact-application-base-0_0_1a1-python38;
+                packages.pythoneda-artifact-application-base-0_0_1a2-python38;
+              pythoneda-base =
+                pythoneda-base.packages.${system}.pythoneda-base-latest-python38;
               python = pkgs.python38;
               inherit pkgs nixpkgsRelease;
             };
-          pythoneda-artifact-application-base-0_0_1a1-python39 =
+          pythoneda-artifact-application-base-0_0_1a2-python39 =
             shared.devShell-for {
               package =
-                packages.pythoneda-artifact-application-base-0_0_1a1-python39;
+                packages.pythoneda-artifact-application-base-0_0_1a2-python39;
+              pythoneda-base =
+                pythoneda-base.packages.${system}.pythoneda-base-latest-python39;
               python = pkgs.python39;
               inherit pkgs nixpkgsRelease;
             };
-          pythoneda-artifact-application-base-0_0_1a1-python310 =
+          pythoneda-artifact-application-base-0_0_1a2-python310 =
             shared.devShell-for {
               package =
-                packages.pythoneda-artifact-application-base-0_0_1a1-python310;
+                packages.pythoneda-artifact-application-base-0_0_1a2-python310;
+              pythoneda-base =
+                pythoneda-base.packages.${system}.pythoneda-base-latest-python310;
               python = pkgs.python310;
               inherit pkgs nixpkgsRelease;
             };
           pythoneda-artifact-application-base-latest-python38 =
-            pythoneda-artifact-application-base-0_0_1a1-python38;
+            pythoneda-artifact-application-base-0_0_1a2-python38;
           pythoneda-artifact-application-base-latest-python39 =
-            pythoneda-artifact-application-base-0_0_1a1-python39;
+            pythoneda-artifact-application-base-0_0_1a2-python39;
           pythoneda-artifact-application-base-latest-python310 =
-            pythoneda-artifact-application-base-0_0_1a1-python310;
+            pythoneda-artifact-application-base-0_0_1a2-python310;
           pythoneda-artifact-application-base-latest =
             pythoneda-artifact-application-base-latest-python310;
           default = pythoneda-artifact-application-base-latest;
