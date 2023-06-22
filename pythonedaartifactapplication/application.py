@@ -2,7 +2,7 @@
 """
 pythonedaartifactapplication/application.py
 
-This file runs PythonEDA-Artifact application.
+This file can be used to run artifact-enabled PythonEDA applications.
 
 Copyright (C) 2023-today rydnr's pythoneda-artifact-application/base
 
@@ -30,7 +30,7 @@ class ArtifactApplication(PythonEDA):
     Class name: ArtifactApplication
 
     Responsibilities:
-        - Runs PythonEDA Artifact.
+        - Runs a PythonEDA application with support for artifact scope.
 
     Collaborators:
         - Command-line handlers from pythoneda-artifact-infrastructure/base
