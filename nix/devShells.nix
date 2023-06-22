@@ -14,9 +14,9 @@ rec {
     echo -e " \033[32m| |_) | |_| | |_| | | | (_) | | | |\033[34m  __/\033[35m (_| |\033[36m (_| |\033[34mhttps://github.com/pythoneda-artifact-infrastructure/base\033[0m";
     echo -e " \033[32m| .__/ \__, |\__|_| |_|\___/|_| |_|\033[34m\___|\033[35m\__,_|\033[36m\__,_|\033[35mhttps://github.com/pythoneda-artifact/base\033[0m";
     echo -e " \033[32m| |     __/ |                                       \033[36mhttps://github.com/pythoneda/base\033[0m";
-    echo -e " \033[32m|_|    |___/        \033[33mARTIFACT (APPLICATION)          \033[37mhttps://patreon.com/rydnr\033[0m";
+    echo -e " \033[32m|_| \033[31mA\033[36mA\033[32m |___/             \033[33mGIT-TAGGING                \033[37mhttps://patreon.com/rydnr\033[0m";
     echo;
-    echo " Thank you for using pythoneda-artifact-application/base and for your appreciation of free software.";
+    echo " Thank you for using pythoneda-artifact-application/git-tagging and for your appreciation of free software.";
     echo;
     export PYTHONPATH="$(python $PYTHONEDABASE/scripts/fix_pythonpath.py)";
   '';

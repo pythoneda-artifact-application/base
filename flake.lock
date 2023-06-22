@@ -62,7 +62,7 @@
         "type": "github"
       }
     },
-    "pythoneda-artifact-base": {
+    "pythoneda-artifact-git-tagging": {
       "inputs": {
         "flake-utils": [
           "flake-utils"
@@ -75,21 +75,21 @@
         ]
       },
       "locked": {
-        "lastModified": 1687182585,
-        "narHash": "sha256-vhrO9UARsfApkAL41KdyGGEDmUlQRBeC7TfdhVpDesI=",
+        "lastModified": 1687445602,
+        "narHash": "sha256-HG1c3ixVZAL4TPSWHC7QOoYkhi1xTFGKVc7FMkjTVdQ=",
         "owner": "pythoneda-artifact",
-        "repo": "base",
-        "rev": "dfc068d230db8dc5a90d092007b800c2146b925e",
+        "repo": "git-tagging",
+        "rev": "fee7d9b261b7e2a66e6757f2f0a429691cff2a03",
         "type": "github"
       },
       "original": {
         "owner": "pythoneda-artifact",
-        "ref": "0.0.1a2",
-        "repo": "base",
+        "ref": "0.0.1a3",
+        "repo": "git-tagging",
         "type": "github"
       }
     },
-    "pythoneda-artifact-infrastructure-base": {
+    "pythoneda-artifact-infrastructure-git-tagging": {
       "inputs": {
         "flake-utils": [
           "flake-utils"
@@ -97,8 +97,8 @@
         "nixos": [
           "nixos"
         ],
-        "pythoneda-artifact-base": [
-          "pythoneda-artifact-base"
+        "pythoneda-artifact-git-tagging": [
+          "pythoneda-artifact-git-tagging"
         ],
         "pythoneda-base": [
           "pythoneda-base"
@@ -108,17 +108,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1687170919,
-        "narHash": "sha256-wfY11+2KwQTkENRatJFkJ7sP+wdM10kEP9hG391tqyU=",
+        "lastModified": 1687445794,
+        "narHash": "sha256-LOO9rnULZkZpxuIsFWfcPGi5P/p9hYnJoaT2TUJzsts=",
         "owner": "pythoneda-artifact-infrastructure",
-        "repo": "base",
-        "rev": "f3d811e548eb5678d030a97fbf462ec29d870326",
+        "repo": "git-tagging",
+        "rev": "59a09bf8bae2873222271ae0983d1e1fac7980b0",
         "type": "github"
       },
       "original": {
         "owner": "pythoneda-artifact-infrastructure",
-        "ref": "0.0.1a2",
-        "repo": "base",
+        "ref": "0.0.1a3",
+        "repo": "git-tagging",
         "type": "github"
       }
     },
@@ -178,8 +178,8 @@
         "flake-utils": "flake-utils",
         "nixos": "nixos",
         "pythoneda-application-base": "pythoneda-application-base",
-        "pythoneda-artifact-base": "pythoneda-artifact-base",
-        "pythoneda-artifact-infrastructure-base": "pythoneda-artifact-infrastructure-base",
+        "pythoneda-artifact-git-tagging": "pythoneda-artifact-git-tagging",
+        "pythoneda-artifact-infrastructure-git-tagging": "pythoneda-artifact-infrastructure-git-tagging",
         "pythoneda-base": "pythoneda-base",
         "pythoneda-infrastructure-base": "pythoneda-infrastructure-base"
       }

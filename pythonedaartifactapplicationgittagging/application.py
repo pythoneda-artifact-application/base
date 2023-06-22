@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-pythonedaartifactapplication/application.py
+pythonedaartifactapplicationgittagging/application.py
 
-This file can be used to run artifact-enabled PythonEDA applications.
+This file can be used to run PythonEDA applications with automatic git tagging.
 
 Copyright (C) 2023-today rydnr's pythoneda-artifact-application/base
 
@@ -23,24 +23,24 @@ from pythonedaapplication.pythoneda import PythonEDA
 
 import asyncio
 
-class ArtifactApplication(PythonEDA):
+class GitTaggingApplication(PythonEDA):
     """
-    Runs PythonEDA Application.
+    Runs a PythonEDA application with support for Git tagging.
 
-    Class name: ArtifactApplication
+    Class name: GitTaggingApplication
 
     Responsibilities:
-        - Runs a PythonEDA application with support for artifact scope.
+        - Runs a PythonEDA application with support for Git tagging.
 
     Collaborators:
-        - Command-line handlers from pythoneda-artifact-infrastructure/base
+        - Command-line handlers from pythoneda-artifact-infrastructure/git-tagging
     """
     def __init__(self):
         """
-        Creates a new ArtifactApplication instance.
+        Creates a new GitTaggingApplication instance.
         """
         super().__init__(__file__)
 
 if __name__ == "__main__":
 
-    asyncio.run(ArtifactApplication.main())
+    asyncio.run(GitTaggingApplication.main())
