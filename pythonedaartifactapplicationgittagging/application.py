@@ -19,6 +19,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
+from pythonedaartifactinfrastructuregittagging.ssh_git_repo_factory import SshGitRepoFactory
 from pythonedaapplication.pythoneda import PythonEDA
 
 import asyncio
@@ -41,6 +42,19 @@ class GitTaggingApplication(PythonEDA):
         """
         super().__init__(__file__)
 
+    async def accept_ssh_settings(self, sshUsername: str, privateKey: str, passphrase: str):
+        """
+        Accepts the SSH settings.
+        :param sshUsername: The SSH username.
+        :type sshUsername: str
+        :param privateKey: The private key.
+        :type privateKey: str
+        :param passphrase: The private key passphrase.
+        :type passphrase: str
+        """
+        SshGitRepoFactory.ssh_username(sshUsername)
+        SshGitRepoFactory.private_key(privateKey)
+        SshGitRepoFactory.passphrase(passphrase)
 if __name__ == "__main__":
 
     asyncio.run(GitTaggingApplication.main())
