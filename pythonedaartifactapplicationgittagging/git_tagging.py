@@ -1,10 +1,9 @@
-#!/usr/bin/env python3
 """
-pythonedaartifactapplicationgittagging/application.py
+pythonedaartifactapplicationgittagging/git_tagging.py
 
 This file can be used to run PythonEDA applications with automatic git tagging.
 
-Copyright (C) 2023-today rydnr's pythoneda-artifact-application/base
+Copyright (C) 2023-today rydnr's pythoneda-artifact-application/git-tagging
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,42 +18,31 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from pythonedaartifactinfrastructuregittagging.ssh_git_repo_factory import SshGitRepoFactory
+from pythoneda.event_listener import EventListener
 from pythonedaapplication.pythoneda import PythonEDA
+from pythonedaartifactinfrastructuregittagging.ssh_git_repo_factory import SshGitRepoFactory
 
 import asyncio
 
-class GitTaggingApplication(PythonEDA):
+class GitTagging(PythonEDA):
     """
     Runs a PythonEDA application with support for Git tagging.
 
-    Class name: GitTaggingApplication
+    Class name: GitTagging
 
     Responsibilities:
         - Runs a PythonEDA application with support for Git tagging.
 
     Collaborators:
-        - Command-line handlers from pythoneda-artifact-infrastructure/git-tagging
+        - Command-line handlers from pythoneda-artifact-infrastructure/git-tagging.
+        - EventListener: To handle incoming events.
     """
     def __init__(self):
         """
-        Creates a new GitTaggingApplication instance.
+        Creates a new GitTagging instance.
         """
         super().__init__(__file__)
 
-    async def accept_ssh_settings(self, sshUsername: str, privateKey: str, passphrase: str):
-        """
-        Accepts the SSH settings.
-        :param sshUsername: The SSH username.
-        :type sshUsername: str
-        :param privateKey: The private key.
-        :type privateKey: str
-        :param passphrase: The private key passphrase.
-        :type passphrase: str
-        """
-        SshGitRepoFactory.ssh_username(sshUsername)
-        SshGitRepoFactory.private_key(privateKey)
-        SshGitRepoFactory.passphrase(passphrase)
 if __name__ == "__main__":
 
-    asyncio.run(GitTaggingApplication.main())
+    asyncio.run(GitTagging.main())
