@@ -25,7 +25,7 @@
         "pythoneda-artifact-event-git-tagging";
     };
     pythoneda-artifact-git-tagging = {
-      url = "github:pythoneda-artifact/git-tagging/0.0.1a5";
+      url = "github:pythoneda-artifact/git-tagging/0.0.1a6";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
@@ -33,13 +33,13 @@
         "pythoneda-artifact-event-git-tagging";
     };
     pythoneda-infrastructure-base = {
-      url = "github:pythoneda-infrastructure/base/0.0.1a11";
+      url = "github:pythoneda-infrastructure/base/0.0.1a12";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
     };
     pythoneda-artifact-infrastructure-git-tagging = {
-      url = "github:pythoneda-artifact-infrastructure/git-tagging/0.0.1a5";
+      url = "github:pythoneda-artifact-infrastructure/git-tagging/0.0.1a6";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
@@ -49,7 +49,7 @@
         "pythoneda-infrastructure-base";
     };
     pythoneda-application-base = {
-      url = "github:pythoneda-application/base/0.0.1a11";
+      url = "github:pythoneda-application/base/0.0.1a12";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
@@ -57,7 +57,7 @@
         "pythoneda-infrastructure-base";
     };
     pythoneda-shared-git = {
-      url = "github:pythoneda-shared/git/0.0.1a2";
+      url = "github:pythoneda-shared/git/0.0.1a3";
       inputs.nixos.follows = "nixos";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pythoneda-base.follows = "pythoneda-base";
@@ -120,13 +120,13 @@
             preBuild = ''
               python -m venv .env
               source .env/bin/activate
-              pip install ${pythoneda-base}/dist/pythoneda_base-${pythoneda-base.version}-py3-none-any.whl
+              pip install ${pythoneda-application-base}/dist/pythoneda_application_base-${pythoneda-application-base.version}-py3-none-any.whl
               pip install ${pythoneda-artifact-event-git-tagging}/dist/pythoneda_artifact_event_git_tagging-${pythoneda-artifact-event-git-tagging.version}-py3-none-any.whl
               pip install ${pythoneda-artifact-event-infrastructure-git-tagging}/dist/pythoneda_artifact_event_infrastructure_git_tagging-${pythoneda-artifact-event-infrastructure-git-tagging.version}-py3-none-any.whl
               pip install ${pythoneda-artifact-git-tagging}/dist/pythoneda_artifact_git_tagging-${pythoneda-artifact-git-tagging.version}-py3-none-any.whl
-              pip install ${pythoneda-infrastructure-base}/dist/pythoneda_infrastructure_base-${pythoneda-infrastructure-base.version}-py3-none-any.whl
               pip install ${pythoneda-artifact-infrastructure-git-tagging}/dist/pythoneda_artifact_infrastructure_git_tagging-${pythoneda-artifact-infrastructure-git-tagging.version}-py3-none-any.whl
-              pip install ${pythoneda-application-base}/dist/pythoneda_application_base-${pythoneda-application-base.version}-py3-none-any.whl
+              pip install ${pythoneda-base}/dist/pythoneda_base-${pythoneda-base.version}-py3-none-any.whl
+              pip install ${pythoneda-infrastructure-base}/dist/pythoneda_infrastructure_base-${pythoneda-infrastructure-base.version}-py3-none-any.whl
               pip install ${pythoneda-shared-git}/dist/pythoneda_shared_git-${pythoneda-shared-git.version}-py3-none-any.whl
               rm -rf .env
             '';

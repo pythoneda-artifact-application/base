@@ -18,9 +18,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from pythoneda.event_listener import EventListener
 from pythonedaapplication.pythoneda import PythonEDA
-from pythonedaartifactinfrastructuregittagging.ssh_git_repo_factory import SshGitRepoFactory
 
 import asyncio
 
@@ -35,7 +33,6 @@ class GitTagging(PythonEDA):
 
     Collaborators:
         - Command-line handlers from pythoneda-artifact-infrastructure/git-tagging.
-        - EventListener: To handle incoming events.
     """
     def __init__(self):
         """
