@@ -68,21 +68,23 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixos { inherit system; };
+        pname = "pythoneda-artifact-application-git-tagging";
         description = "Application layer for pythoneda-artifact/git-tagging";
         license = pkgs.lib.licenses.gpl3;
         homepage =
           "https://github.com/pythoneda-artifact-application/git-tagging";
         maintainers = with pkgs.lib.maintainers; [ ];
         nixpkgsRelease = "nixos-23.05";
-        shared = import ./nix/devShells.nix;
-        pythoneda-artifact-application-git-tagging-for = { version
+        shared = import ./nix/shared.nix;
+        pythonpackage = "pythonedaartifactapplicationgittagging";
+        entrypoint = "${pythonpackage}/${pname}.py";
+        pythoneda-artifact-application-git-tagging-for = { pname, version
           , pythoneda-base, pythoneda-artifact-event-git-tagging
           , pythoneda-artifact-event-infrastructure-git-tagging
           , pythoneda-artifact-git-tagging, pythoneda-infrastructure-base
           , pythoneda-artifact-infrastructure-git-tagging
           , pythoneda-application-base, pythoneda-shared-git, python }:
           let
-            pname = "pythoneda-artifact-application-git-tagging";
             pythonVersionParts = builtins.splitVersion python.version;
             pythonMajorVersion = builtins.head pythonVersionParts;
             pythonMajorMinorVersion =
@@ -115,7 +117,7 @@
 
             checkInputs = with python.pkgs; [ pytest ];
 
-            pythonImportsCheck = [ "pythonedaartifactapplicationgittagging" ];
+            pythonImportsCheck = [ pythonpackage ];
 
             preBuild = ''
               python -m venv .env
@@ -132,9 +134,14 @@
             '';
 
             postInstall = ''
-              mkdir $out/dist
+              mkdir $out/dist $out/bin
               cp dist/${wheelName} $out/dist
               jq ".url = \"$out/dist/${wheelName}\"" $out/lib/python${pythonMajorMinorVersion}/site-packages/${pnameWithUnderscores}-${version}.dist-info/direct_url.json > temp.json && mv temp.json $out/lib/python${pythonMajorMinorVersion}/site-packages/${pnameWithUnderscores}-${version}.dist-info/direct_url.json
+              chmod +x $out/lib/python${pythonMajorMinorVersion}/site-packages/${entrypoint}
+              echo '#!/usr/bin/env sh' > $out/bin/${pname}.sh
+              echo "export PYTHONPATH=$PYTHONPATH" >> $out/bin/${pname}.sh
+              echo '${python}/bin/python ${entrypoint} $@' >> $out/bin/${pname}.sh
+              chmod +x $out/bin/${pname}.sh
             '';
 
             meta = with pkgs.lib; {
@@ -149,7 +156,7 @@
           , pythoneda-application-base, pythoneda-shared-git, python }:
           pythoneda-artifact-application-git-tagging-for {
             version = "0.0.1a7";
-            inherit pythoneda-base pythoneda-artifact-event-git-tagging
+            inherit pname pythoneda-base pythoneda-artifact-event-git-tagging
               pythoneda-artifact-event-infrastructure-git-tagging
               pythoneda-artifact-git-tagging pythoneda-infrastructure-base
               pythoneda-artifact-infrastructure-git-tagging
@@ -206,6 +213,28 @@
           default = pythoneda-artifact-application-git-tagging-latest;
         };
         defaultPackage = packages.default;
+        apps = rec {
+          pythoneda-artifact-application-git-tagging-0_0_1a7-python39 =
+            shared.app-for {
+              package =
+                self.packages.${system}.pythoneda-artifact-application-git-tagging-0_0_1a7-python39;
+              inherit pname;
+            };
+          pythoneda-artifact-application-git-tagging-0_0_1a7-python310 =
+            shared.app-for {
+              package =
+                self.packages.${system}.pythoneda-artifact-application-git-tagging-0_0_1a7-python310;
+              inherit pname;
+            };
+          pythoneda-artifact-application-git-tagging-latest-python39 =
+            pythoneda-artifact-application-git-tagging-0_0_1a7-python39;
+          pythoneda-artifact-application-git-tagging-latest-python310 =
+            pythoneda-artifact-application-git-tagging-0_0_1a7-python310;
+          pythoneda-artifact-application-git-tagging-latest =
+            pythoneda-artifact-application-git-tagging-latest-python310;
+          default = pythoneda-artifact-application-git-tagging-latest;
+        };
+        defaultApp = apps.default;
         devShells = rec {
           pythoneda-artifact-application-git-tagging-0_0_1a7-python39 =
             shared.devShell-for {

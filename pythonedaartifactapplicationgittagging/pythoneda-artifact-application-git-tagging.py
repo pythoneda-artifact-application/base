@@ -1,5 +1,6 @@
+#!/usr/bin/env python3
 """
-pythonedaartifactapplicationgittagging/git_tagging.py
+pythonedaartifactapplicationgittagging/pythoneda-artifact-application-git-tagging.py
 
 This file can be used to run PythonEDA applications with automatic git tagging.
 
